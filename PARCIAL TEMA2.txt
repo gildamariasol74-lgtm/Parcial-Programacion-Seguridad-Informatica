@@ -1,0 +1,25 @@
+SERRANO GILDA
+
+# Bucle que se repite exactamente 3 veces para simular intentos de verificación
+for ($i = 1; $i -le 3; $i++) {
+    Write-Host "--- Intento de verificación número: $i ---" -ForegroundColor Cyan
+
+    # Muestra la fecha y hora exacta de cada verificación
+    $fechaActual = Get-Date
+    Write-Host "Fecha y hora de la verificación: $fechaActual"
+
+    # Ejecuta el cmdlet para obtener los adaptadores de red activos
+    Get-NetAdapter | Where-Object { $_.Status -eq "Up" }
+
+    # Estructura condicional para evaluar si el número de la iteración es par o impar
+    if ($i % 2 -eq 0) {
+        Write-Host "Iteración par ($i): El sistema se encuentra procesando la verificación estándar de red." -ForegroundColor Green
+    } else {
+        Write-Host "Iteración impar ($i): Realizando escaneo prioritario de adaptadores de red." -ForegroundColor Yellow
+    }
+    
+    Write-Host "" # Línea en blanco para separar las iteraciones
+}
+
+# Mensaje final por consola que indica que el monitoreo ha concluido con éxito
+Write-Host "¡El monitoreo ha concluido con éxito!" -ForegroundColor Cyan
