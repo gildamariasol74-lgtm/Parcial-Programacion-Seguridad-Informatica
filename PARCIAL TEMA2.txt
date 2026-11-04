@@ -1,5 +1,3 @@
-SERRANO GILDA
-
 # Bucle que se repite exactamente 3 veces para simular intentos de verificación
 for ($i = 1; $i -le 3; $i++) {
     Write-Host "--- Intento de verificación número: $i ---" -ForegroundColor Cyan
